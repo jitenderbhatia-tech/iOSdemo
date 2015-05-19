@@ -1,0 +1,42 @@
+int ErrorMessageCount = 0;
+		String objName = null;
+		String objProperty=null;
+		try
+		{
+		String[] oRBreak=identifier.split("-");
+		
+		int oRLength= oRBreak.length;
+		
+		objName=oRBreak[oRLength-2];
+		String[] object=oRBreak[oRLength-1].split("=");
+		int objLength=object.length;
+		String identity=object[objLength-2];
+		objProperty=object[objLength-1];
+		
+		if((objName.isEmpty())|| (objName==null))
+		{
+			objName=objProperty;
+		}
+
+		
+			System.out.println(oRBreak[oRLength-1]);
+			SetAppium.driver.findElement(ToBy(oRBreak[oRLength-1])).click();
+			System.out.println("Object Name : " + SetAppium.driver.findElement(ToBy(identifier)).getAttribute(identifier));
+			pageSync();
+		}
+		catch (Exception e ) 
+		{
+			ErrorMessageCount = 1;
+			//	ErrorMessage = e.getMessage();
+
+		}
+
+		if (ErrorMessageCount == 0)
+		{
+			log.info("Passed- Clicked on '" + objName + "' object");
+		} else {
+			log.info("Failed- Unable to locate element on a page with property: " + objProperty + " having object name -'"+ objName+"'");
+
+		}
+		pageSync();
+
