@@ -18,6 +18,7 @@ int ErrorMessageCount = 0;
 			objName=objProperty;
 		}
 
+// ADDED LINES
 		
 			System.out.println(oRBreak[oRLength-1]);
 			SetAppium.driver.findElement(ToBy(oRBreak[oRLength-1])).click();
